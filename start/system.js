@@ -2977,6 +2977,121 @@ kyami.sendMessage(m.chat, {
                     })
                     }
 break
+			case "donate":
+case "pay":
+case "donasi":
+case "payment":
+ {
+ await naze.sendMessage(m.chat, {
+ react: {
+ text: `⏱️`,
+ key: m.key
+ }
+ });
+ const url = "https://telegra.ph/file/65469aa05e05c2543469c.jpg";
+ async function image(url) {
+ const {
+ imageMessage
+ } = await generateWAMessageContent({
+ image: {
+ url
+ }
+ }, {
+ upload: naze.waUploadToServer
+ });
+ return imageMessage;
+ }
+ let msg = generateWAMessageFromContent(m.chat, {
+ viewOnceMessage: {
+ message: {
+ interactiveMessage: {
+ body: {
+ text: `Berikut daftar metode pembayaran saya ya~`
+ },
+ carouselMessage: {
+ cards: [{
+ header: proto.Message.InteractiveMessage.Header.create({
+ ...(await prepareWAMessageMedia({
+ image: {
+ url: "./data/image/payment/dana.jpg"
+ }
+ }, {
+ upload: naze.waUploadToServer
+ })),
+ title: "",
+ gifPlayback: true,
+ subtitle: 'Firman',
+ hasMediaAttachment: false
+ }),
+ body: {
+ text: `> Klik tombol DANA di bawah\n> DANA A/N: ${global.andana}`
+ },
+ nativeFlowMessage: {
+ buttons: [{
+ name: "cta_copy",
+ buttonParamsJson: `{\"display_text\":\"Payment DANA\",\"id\":\"123456789\",\"copy_code\":\"${global.nodana}\"}`
+ }]
+ }
+ }, {
+ header: proto.Message.InteractiveMessage.Header.create({
+ ...(await prepareWAMessageMedia({
+ image: {
+ url: "./data/image/payment/gopay.jpg"
+ }
+ }, {
+ upload: naze.waUploadToServer
+ })),
+ title: "",
+ gifPlayback: true,
+ subtitle: ownername,
+ hasMediaAttachment: false
+ }),
+ body: {
+ text: `> Klik tombol GOPAY di bawah\n> GOPAY A/N: ${global.angopay}`
+ },
+ nativeFlowMessage: {
+ buttons: [{
+ name: "cta_copy",
+ buttonParamsJson: `{\"display_text\":\"Payment GOPAY\",\"id\":\"123456789\",\"copy_code\":\"${global.nogopay}\"}`
+ }]
+ }
+ }, {
+ header: proto.Message.InteractiveMessage.Header.create({
+ ...(await prepareWAMessageMedia({
+ image: {
+ url: "./data/image/payment/qris.jpg"
+ }
+ }, {
+ upload: naze.waUploadToServer
+ })),
+ title: "",
+ gifPlayback: true,
+ subtitle: 'Firman',
+ hasMediaAttachment: false
+ }),
+ body: {
+ text: `> SCAN di atas / klik tombol`
+ },
+ nativeFlowMessage: {
+ buttons: [{
+ name: "cta_url",
+ buttonParamsJson: `{\"display_text\":\"Payment QRIS\",\"url\":\\https://tmpfiles.org/dl/18376782/1735084730914.jpg\",\"merchant_url\":\"https://www.google.com\"}`
+ }]
+ }
+ }],
+ messageVersion: 1
+ }
+ }
+ }
+ }
+ }, {
+ quoted: m
+ });
+ await naze.relayMessage(msg.key.remoteJid, msg.message, {
+ messageId: msg.key.id
+ });
+ }
+ break;
 case 'payment': {
 let pay = `𝙃𝙞 @${pushname} 𝘽𝙚𝙧𝙞𝙠𝙪𝙩 𝘽𝙚𝙗𝙚𝙧𝙖𝙥𝙖 𝙋𝙖𝙮𝙢𝙚𝙣𝙩 𝙆𝙖𝙢𝙞`
 await kyami.sendMessage(m.chat, {
