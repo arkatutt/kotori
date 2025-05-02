@@ -25,6 +25,13 @@ global.creator = "6285179836603@s.whatsapp.net" // Ganti aja
 global.welcome = false
 global.autoswview = true //auto status/story view
 global.delayPushkontak = 7500
+//~~~~~~~~~~~~~~~< PAYMENT INFO >~~~~~~~~~~~~~~~\\
+
+global.nodana = "081326565335"; // Nomor DANA
+global.andana = "Firman";        // Nama di akun DANA
+
+global.nogopay = "081326565335"; // Nomor GoPay
+global.angopay = "Firman";       // Nama di akun GoPay
 //~~~~~~~~~ Settings Payment ~~~~~~~~~//
 global.dana = "Tidak Tersedia" // Ganti aja
 global.ovo = "Tidak Tersedia" // Ganti aja
